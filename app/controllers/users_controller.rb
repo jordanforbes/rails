@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   	@users = User.all
   
   	@user= User.new
+
+  	current_user = User.find_by_id(session[:current_user_id])
   	
   end
 
