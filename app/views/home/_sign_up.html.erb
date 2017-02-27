@@ -1,0 +1,18 @@
+<div class="modal mymodal">
+  <button class="exit">x</button>
+    <%= form_for @user do |f| %>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.label :password %>
+      <%= f.text_field :password %>
+
+      <%= f.submit %>
+    <% end %>
+
+    
+  
+</div>
