@@ -9,15 +9,24 @@ class HomeController < ApplicationController
 
 	end 
 
+	def new
+	end
+
+	def create
+	end
+
 	def show
 		
 	end
 	#home controller- go to home folder
 	# def index action- go to index file
-	def foo
+	def edit
 	end
 
-	def bar
+	def update
+	end
+
+	def destroy
 	end
 
 end
