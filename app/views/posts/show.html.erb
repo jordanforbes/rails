@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<h2>Post</h2>
 <p>
   <strong>Title:</strong>
   <%= @post.title %>
 </p>
-
+	
 <p>
   <strong>Body:</strong>
   <%= @post.body %>
@@ -12,8 +13,29 @@
 
 <p>
   <strong>User:</strong>
-  <%= @post.user_id %>
+  <%= @post.user_id%>
 </p>
+
+	<h3>Comments</h3>
+<% @comments.each do |comment|%>
+	<p>
+	<%= comment.id %>
+	<%= comment.title %>
+	<%= comment.body %>
+	</p>
+<% end %>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', '/'%>
+
+<%= form_for @comment do |f| %>
+	
+	<%= f.text_field :title %>
+	<br>
+	<%= f.text_field :body %>
+	<br>
+	<%= f.hidden_field :post_id, value: @post.id %>
+	<%= f.submit %>
+
+	
+<% end %>

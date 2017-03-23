@@ -1,17 +1,15 @@
 <div class="modal modal1 mymodal">
   <button class="exit">x</button>
     <p>sign in</p>
-    <%= form_for @user do |f| %>
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name %>
+    <%= form_tag("/sessions/new") do %>
 
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= label_tag :email %>
+      <%= text_field_tag :email %>
 
-      <%= f.label :password %>
-      <%= f.text_field :password %>
+      <%= label_tag :password %>
+      <%= text_field_tag :password %>
 
-      <%= f.submit %>
+      <%= submit_tag %>
     <% end %>
 
     

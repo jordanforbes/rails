@@ -1,19 +1,20 @@
 
 <div class="container">
 	<div class="row">
-	<%= render 'navbar' %>
 	</div>
 	<div class="row">
 		<div class="col-md-4">
-		<%= render 'posts/form', post:  @post %>
+		<% if logged_user %>
+			<%= render 'posts/form', post:  @post %>
 				
 			
-	 	<%= render "home/sign_up" %>
+	 		
 
 
 			<% @users.each do|user| %>
 				<li><%=user.first_name%> <%=user.email%></li>
 			<% end %>
+		<% end %>
 		</div>
 		<div class="col-md-4">
 

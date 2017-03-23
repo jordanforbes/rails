@@ -1,1 +1,25 @@
+<% if logged_user %>
+      <%= current_user.first_name %> is logged in! 
+      <%= link_to 'Sign Out', "/sign-out", method: :delete %>
+
+<%else%>
+<div>
 <span class="signbutton signin">Sign Up</span>
+
+    <p>sign in</p>
+    <%= form_tag("/sessions/new") do %>
+
+      <%= label_tag :email %>
+      <%= text_field_tag :email %>
+
+      <%= label_tag :password %>
+      <%= text_field_tag :password %>
+
+      <%= submit_tag %>
+    <% end %>
+</div>
+  
+
+<%= render "home/sign_up" %>
+<% end %>
+

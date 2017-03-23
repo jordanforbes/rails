@@ -6,6 +6,14 @@ class CommentsController < ApplicationController
 	end
 
 	def create
+		comment = Comment.new
+		comment.title = params[:comment][:title]
+		comment.body = params[:comment][:body]
+		comment.post_id = params[:comment][:post_id]
+		#byebug
+		comment.save
+		p params
+		redirect_to :back
 	end
 
 	def show

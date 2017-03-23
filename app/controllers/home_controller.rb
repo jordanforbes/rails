@@ -3,7 +3,6 @@ class HomeController < ApplicationController
 		
 		@users = User.all
 		@user = User.new
-
 		@posts = Post.all
 		@post = Post.new
 

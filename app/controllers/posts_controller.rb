@@ -5,9 +5,10 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index  
     @posts = Post.all
-
     @post = Post.new
     @user= User.all
+    @current_user = User.find(session[:user_id])
+   # @comments = Comments.all
   end 
 
   def post
@@ -17,6 +18,9 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @users= User.all
+    @comment = Comment.new
+    @comments = Comment.where(post_id: @post.id)
   end
 
   # GET /posts/new
@@ -30,18 +34,35 @@ class PostsController < ApplicationController
 
   # POST /posts
   # POST /posts.json
-  def create
-    @post = Post.new(post_params)
+  # def create
+  #    @post = Post.new(params[:body])
+  #    @user = current_user
+  #    @post.user_id = current_user
+  #    @post.save
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
+  #    respond_to do |format|
+  #      if @post.save
+  #        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+  #        format.json { render :show, status: :created, location: @post }
+  #      else
+  #        format.html { render :new }
+  #        format.json { render json: @post.errors, status: :unprocessable_entity }
+  #      end
+  #   end
+
+    
+  # end
+
+
+  def create
+    @user = User.all
+    post = Post.new
+    post.title = post_params[:title]
+    post.body = post_params[:body]
+    post.user_id = current_user.id
+    post.save
+    redirect_to root_path
+
   end
 
   # PATCH/PUT /posts/1
